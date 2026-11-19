@@ -8,7 +8,7 @@ author: THOOTJE
 description: Custom THOOTJE-CORE roleplay server met de meegeleverde THOOTJE resources.
 
 variables:
-  githubRepo: GITHUB_USERNAME/THOOTJE-FIVEM-RECIPE
+  githubRepo: FrieseMexicanoNL/THOOTJE-FIVEM-RECIPE
   githubRef: main
 
 tasks:
@@ -42,11 +42,11 @@ tasks:
     dest: ./resources/[standalone]/pma-voice
 
   # Download de THOOTJE resources uit dezelfde GitHub repository
-  # Pas GITHUB_USERNAME in deze recipe aan voordat je hem publiceert.
- - action: download_github
-   src: https://github.com/FrieseMexicanoNL/THOOTJE-FIVEM-RECIPE
-   ref: main
-   dest: ./tmp/thootje-recipe
+  # Download de THOOTJE resources uit dezelfde GitHub repository.
+  - action: download_github
+    src: https://github.com/FrieseMexicanoNL/THOOTJE-FIVEM-RECIPE
+    ref: main
+    dest: ./tmp/thootje-recipe
 
   - action: copy_path
     src: ./tmp/thootje-recipe/resources/[thootje]
