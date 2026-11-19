@@ -1,0 +1,141 @@
+$engine: 3
+$minFxVersion: 12913
+$onesync: on
+
+name: THOOTJE RP
+version: 1.0.0
+author: THOOTJE
+description: Custom THOOTJE-CORE roleplay server met de meegeleverde THOOTJE resources.
+
+variables:
+  githubRepo: GITHUB_USERNAME/THOOTJE-FIVEM-RECIPE
+  githubRef: main
+
+tasks:
+  # Basis FiveM resources
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: master
+    subpath: resources
+    dest: ./resources/[cfx-default]
+
+  # Database en basis dependencies
+  - action: download_file
+    url: https://github.com/CommunityOx/oxmysql/releases/latest/download/oxmysql.zip
+    path: ./tmp/oxmysql.zip
+
+  - action: unzip
+    src: ./tmp/oxmysql.zip
+    dest: ./resources/[standalone]
+
+  - action: download_file
+    url: https://github.com/CommunityOx/ox_lib/releases/latest/download/ox_lib.zip
+    path: ./tmp/ox_lib.zip
+
+  - action: unzip
+    src: ./tmp/ox_lib.zip
+    dest: ./resources/[standalone]
+
+  - action: download_github
+    src: https://github.com/AvarianKnight/pma-voice
+    ref: main
+    dest: ./resources/[standalone]/pma-voice
+
+  # Download de THOOTJE resources uit dezelfde GitHub repository
+  # Pas GITHUB_USERNAME in deze recipe aan voordat je hem publiceert.
+  - action: download_github
+    src: https://github.com/GITHUB_USERNAME/THOOTJE-FIVEM-RECIPE
+    ref: main
+    dest: ./tmp/thootje-recipe
+
+  - action: copy_path
+    src: ./tmp/thootje-recipe/resources/[thootje]
+    dest: ./resources/[thootje]
+
+  # Database automatisch aanmaken en alle resource-tabellen importeren
+  - action: connect_database
+
+  - action: query_database
+    file: ./tmp/thootje-recipe/sql/install_all.sql
+
+  # Serverconfiguratie
+  - action: write_file
+    file: ./server.cfg
+    data: |
+      # ==========================================================
+      # THOOTJE RP - txAdmin generated server.cfg
+      # ==========================================================
+
+      {{serverEndpoints}}
+
+      sv_licenseKey "{{svLicense}}"
+      sv_hostname "{{serverName}} | THOOTJE RP"
+      sets sv_projectName "{{serverName}}"
+      sets sv_projectDesc "Een moderne Nederlandse roleplay server op THOOTJE-CORE."
+      sets tags "dutch, nederland, roleplay, thootje, seriousrp"
+      sv_maxclients {{maxClients}}
+
+      set onesync on
+      set resources_useSystemChat true
+      set mysql_connection_string "{{dbConnectionString}}"
+
+      # CFX standaard resources
+      ensure mapmanager
+      ensure spawnmanager
+      ensure sessionmanager
+      ensure hardcap
+      ensure baseevents
+      ensure rconlog
+
+      # Dependencies
+      ensure oxmysql
+      ensure ox_lib
+      ensure pma-voice
+
+      # THOOTJE CORE & CHARACTER
+      ensure thootje-core
+      ensure thootje-multicharacter
+
+      # THOOTJE ECONOMY & PLAYER SYSTEMS
+      ensure thootje-inventory
+      ensure thootje-banking
+      ensure thootje-billing
+      ensure thootje-jobs
+      ensure thootje-society
+      ensure thootje-shops
+
+      # THOOTJE VEHICLES
+      ensure thootje-garage
+      ensure thootje-vehicles
+      ensure thootje-pechhulpjob
+
+      # THOOTJE GOVERNMENT & ACTIVITIES
+      ensure thootje-politiejob
+      ensure thootje-ambulancejob
+      ensure thootje-drugs
+
+      # THOOTJE PLAYER EXPERIENCE
+      ensure thootje-phone
+      ensure thootje-clothing
+      ensure thootje-housing
+      ensure thootje-hud
+
+      # THOOTJE STAFF
+      ensure thootje-admin
+
+      # ACE permissions
+      add_ace group.admin command allow
+      add_ace group.admin thootje.admin allow
+      add_ace group.admin thootje.admin.super allow
+      add_ace group.admin thootje.jobs.admin allow
+      add_ace group.admin thootje.drugs.admin allow
+
+      # Voeg hieronder je eigen admins toe:
+      # add_principal identifier.license:VUL_HIER_LICENSE_IN group.admin
+
+      # Security / defaults
+      sv_scriptHookAllowed 0
+
+  # Opruimen tijdelijke downloadbestanden
+  - action: remove_path
+    path: ./tmp
