@@ -40,9 +40,20 @@ tasks:
     ref: main
     dest: ./tmp/thootje-recipe
 
+  # De GitHub-repository heeft de resourcegroepen direct in de hoofdmap staan.
   - action: copy_path
-    src: ./tmp/thootje-recipe/resources/[thootje]
-    dest: ./resources/[thootje]
+    src: ./tmp/thootje-recipe/[core]
+    dest: ./resources/[core]
+    overwrite: true
+
+  - action: copy_path
+    src: ./tmp/thootje-recipe/[core-extra]
+    dest: ./resources/[core-extra]
+    overwrite: true
+
+  - action: copy_path
+    src: ./tmp/thootje-recipe/[addons]
+    dest: ./resources/[addons]
     overwrite: true
 
   - action: connect_database
