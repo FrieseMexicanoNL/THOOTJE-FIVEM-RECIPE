@@ -41,7 +41,7 @@ txAdmin haalt een recipe op via een URL. De recipe kan niet rechtstreeks de best
 5. Commit de bestanden naar de branch `main`.
 6. Gebruik in txAdmin → Setup → Server Deployer → Remote URL Template deze URL:
 
-   `https://raw.githubusercontent.com/JOUW_GITHUB_NAAM/THOOTJE-FIVEM-RECIPE/main/recipe.yaml`
+   `https://raw.githubusercontent.com/FrieseMexicanoNL/THOOTJE-FIVEM-RECIPE/main/recipe.yaml`
 
 Als je repository private is, kan txAdmin de bestanden niet zomaar downloaden. Gebruik voor deze deploymethode een public repository en zet geen wachtwoorden of server keys in GitHub. De server key en databasegegevens worden door txAdmin als deployervariabelen ingevuld.
 
