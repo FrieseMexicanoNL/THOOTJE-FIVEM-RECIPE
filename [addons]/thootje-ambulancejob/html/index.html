@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THOOTJE EMS MDT</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="hidden">
+  <main class="tablet">
+    <header>
+      <div class="brand"><div class="logo">✚</div><div><b>THOOTJE <em>EMS</em></b><small>AMBULANCE · MEDICAL RESPONSE SYSTEM</small></div></div>
+      <div class="connection"><i></i> LIVE VERBINDING</div>
+      <button class="close" id="close">×</button>
+    </header>
+    <aside>
+      <div class="nav-title">MEDICAL OPERATIONS</div>
+      <button class="nav active" data-page="dashboard"><span>◈</span> Overzicht</button>
+      <button class="nav" data-page="calls"><span>⌁</span> 112-meldingen <b id="call-count">0</b></button>
+      <button class="nav" data-page="patients"><span>♡</span> Patiënten</button>
+      <button class="nav" data-page="treatments"><span>✚</span> Behandelingen</button>
+      <button class="nav" data-page="billing"><span>€</span> Facturatie</button>
+      <button class="nav" data-page="garage"><span>▣</span> Dienstgarage</button>
+      <button class="panic" id="panic">⚠ PANIEKMELDING</button>
+      <div class="side-bottom">THOOTJE-CORE<br><small>EMS RESPONSE · v1.0.0</small></div>
+    </aside>
+    <section class="main">
+      <div class="page-head"><div><small>AMBULANCECENTRALE / OPERATIONEEL</small><h1 id="page-title">Overzicht</h1></div><button class="refresh" id="refresh">↻ Vernieuwen</button></div>
+      <div id="content"></div>
+    </section>
+    <footer><span>THOOTJE AMBULANCE SERVICE</span><span>SECURE MEDICAL NETWORK <i></i></span></footer>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

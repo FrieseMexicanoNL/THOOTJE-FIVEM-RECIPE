@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THOOTJE Shops</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="hidden">
+  <main class="shop-window">
+    <header class="topbar">
+      <div class="brand"><div class="brand-icon">T</div><div><b>THOOTJE <span>STORES</span></b><small>WINKELS & VERKOOPPUNTEN</small></div></div>
+      <button id="close" class="close">×</button>
+    </header>
+    <section class="hero">
+      <div><div class="eyebrow">WELKOM BIJ</div><h1 id="shop-title">Winkel</h1><p id="shop-subtitle">Alles wat je nodig hebt.</p></div>
+      <div class="hero-mark">T</div>
+    </section>
+    <nav class="tabs"><button class="tab active" data-tab="buy">Winkel kopen</button><button class="tab" data-tab="sell">Verkopen</button></nav>
+    <div class="toolbar"><input id="search" placeholder="Zoek een product..."><div id="currency">$</div></div>
+    <section id="products" class="products"></section>
+    <footer><span>THOOTJE-CORE ECONOMY</span><span>SECURE TRANSACTIONS <i></i></span></footer>
+  </main>
+  <div id="toast"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
