@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>THOOTJE Society</title><link rel="stylesheet" href="style.css"></head>
+<body><main id="app" class="hidden"><header><div><small>THOOTJE SYSTEMS / BEDRIJFSBEHEER</small><h1 id="company">Bedrijf</h1><p id="role">Medewerker</p></div><button id="close">✕</button></header>
+<section class="stats"><article><span>Bedrijfssaldo</span><strong id="balance">€0</strong></article><article><span>Rekeningnummer</span><strong id="account">—</strong></article><article><span>Jouw functie</span><strong id="grade">—</strong></article></section>
+<nav><button class="tab active" data-tab="bank">Rekening</button><button class="tab" data-tab="staff" id="staffTab">Medewerkers</button><button class="tab" data-tab="history">Transacties</button></nav>
+<section id="bank" class="panel"><div class="section-title"><div><h2>Bedrijfsrekening</h2><p>Beheer de financiële zaken van je organisatie.</p></div><button class="secondary" id="refresh">Vernieuwen</button></div>
+<div class="forms"><form id="deposit"><h3>Geld storten</h3><input name="amount" type="number" min="1" placeholder="Bedrag (€)" required><input name="description" placeholder="Omschrijving"><button>Storten</button></form>
+<form id="withdraw"><h3>Geld opnemen</h3><input name="amount" type="number" min="1" placeholder="Bedrag (€)" required><input name="description" placeholder="Omschrijving"><button>Opnemen</button></form>
+<form id="transfer"><h3>Overboeken</h3><input name="target" placeholder="Rekeningnummer ontvanger" required><input name="amount" type="number" min="1" placeholder="Bedrag (€)" required><input name="description" placeholder="Omschrijving"><button>Overboeken</button></form></div>
+<p class="hint">Storten is beschikbaar voor alle medewerkers. Opnemen en overboeken zijn alleen beschikbaar voor directie/bedrijfsleiding.</p></section>
+<section id="staff" class="panel hidden"><div class="section-title"><div><h2>Medewerkers</h2><p>Neem spelers aan en beheer hun functie.</p></div></div><form id="hire" class="hire"><input name="playerId" type="number" min="1" placeholder="Speler-ID" required><select name="grade" id="gradeSelect"></select><button>Aannemen</button></form><div id="employees" class="rows"></div></section>
+<section id="history" class="panel hidden"><h2>Recente transacties</h2><div id="transactions" class="rows"></div></section>
+<footer>THOOTJE SOCIETY <span>BEDRIJVEN & OVERHEIDSREKENINGEN</span></footer></main><script src="app.js"></script></body></html>

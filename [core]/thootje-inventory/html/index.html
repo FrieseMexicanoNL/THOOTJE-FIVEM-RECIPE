@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css"><title>Thootje Inventory</title>
+</head>
+<body>
+<div id="inventory" class="inventory hidden">
+  <div class="topbar">
+    <div class="brand"><div class="brand-icon">T<span>.</span></div><div><b>THOOTJE <em>INVENTORY</em></b><small>JOUW SPULLEN · JOUW VERHAAL</small></div></div>
+    <div class="weight-wrap"><div class="weight-label"><span>INVENTORY GEWICHT</span><b id="weightText">0 / 30 KG</b></div><div class="weight-track"><div id="weightBar"></div></div></div>
+    <button id="close" class="close">ESC <span>×</span></button>
+  </div>
+  <main class="layout">
+    <section class="main-inventory">
+      <div class="section-title"><div><small>OVERZICHT</small><h1>Mijn <em>inventory</em></h1></div><div class="search"><span>⌕</span><input id="search" placeholder="Zoek een item..."></div></div>
+      <div id="grid" class="grid"></div>
+      <div class="grid-footer"><span>SLEEP ITEMS OM ZE TE VERPLAATSEN</span><span id="slotText">30 SLOTS</span></div>
+    </section>
+    <aside class="right">
+      <section class="details">
+        <div class="section-kicker">ITEM DETAILS</div>
+        <div id="detailIcon" class="detail-icon">?</div>
+        <h2 id="detailName">Selecteer een item</h2>
+        <p id="detailDescription">Klik op een item om de details te bekijken.</p>
+        <div class="detail-stats"><div><small>GEWICHT</small><b id="detailWeight">—</b></div><div><small>HOEVEELHEID</small><b id="detailCount">—</b></div><div><small>KWALITEIT</small><b id="detailRarity">—</b></div></div>
+        <div class="actions"><button id="use" class="action primary" disabled>GEBRUIKEN <span>↗</span></button><button id="drop" class="action" disabled>NEERLEGGEN</button><button id="give" class="action" disabled>GEVEN</button></div>
+      </section>
+      <section class="quick">
+        <div class="quick-title"><div><small>SNELTOETSEN</small><h3>Quick <em>slots</em></h3></div><span>1 — 5</span></div>
+        <div id="hotbar" class="hotbar"></div>
+        <p>Gebruik de sneltoetsen om items direct te gebruiken.</p>
+      </section>
+      <div class="hint"><span>THOOTJE CORE</span><span>ROLEPLAY INVENTORY · V1.0</span></div>
+    </aside>
+  </main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>

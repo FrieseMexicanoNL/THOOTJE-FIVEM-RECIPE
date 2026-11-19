@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><title>THOOTJE BANK</title></head>
+<body>
+<div id="app" class="hidden">
+ <div class="shell">
+  <aside class="sidebar">
+   <div class="brand"><div class="brand-icon">T<span>.</span></div><div><b>THOOTJE</b><small>PRIVATE BANKING</small></div></div>
+   <div class="profile"><div class="avatar">✦</div><div><b id="profileName">Mijn rekening</b><small>Persoonlijke rekening</small></div></div>
+   <nav><button class="nav active" data-page="overview"><span>▦</span> Overzicht</button><button class="nav" data-page="transfer"><span>↗</span> Overboeken</button><button class="nav" data-page="history"><span>◷</span> Transacties</button></nav>
+   <div class="sidebar-bottom"><div class="secure"><i></i><div><b>Veilig bankieren</b><small>Beveiligde verbinding</small></div></div><div class="version">THOOTJE BANK · 1.0.0</div></div>
+  </aside>
+  <main class="main">
+   <header><div><small id="pageEyebrow">PERSOONLIJK DASHBOARD</small><h1 id="pageTitle">Goedendag 👋</h1><p id="pageSubtitle">Welkom bij jouw financiële overzicht.</p></div><button id="close" aria-label="Sluiten">✕</button></header>
+   <section class="page" id="overview">
+    <div class="balance-card"><div class="balance-top"><span>TOTAAL SALDO</span><span class="live"><i></i> ACTUEEL</span></div><div class="balance" id="balance">€ 0,00</div><div class="account-line"><span id="accountNumber">TH00000000</span><button id="copy">KOPIEER ↗</button></div><div class="card-decoration"></div><div class="card-foot"><span>THOOTJE BANK</span><b>✦</b></div></div>
+    <div class="quick-actions"><button class="action" data-goto="transfer"><span class="action-icon">↗</span><b>Geld overboeken</b><small>Maak geld over</small></button><button class="action" id="rename"><span class="action-icon">✎</span><b>Rekening aanpassen</b><small>Wijzig je rekeningnaam</small></button></div>
+    <div class="section-head"><div><h2>Recente activiteit</h2><p>De laatste bewegingen op je rekening.</p></div><button class="text-btn" data-goto="history">Alles bekijken →</button></div>
+    <div class="transactions" id="recent"></div>
+   </section>
+   <section class="page hidden" id="transfer">
+    <div class="form-card"><div class="form-heading"><div class="form-icon">↗</div><div><h2>Nieuwe overboeking</h2><p>Maak veilig geld over naar een andere THOOTJE BANK-rekening.</p></div></div>
+     <form id="transferForm">
+      <label>Rekeningnummer ontvanger<input id="target" type="text" placeholder="Bijv. TH12345678" maxlength="32" required autocomplete="off"></label>
+      <div class="form-row"><label>Bedrag<input id="amount" type="number" min="1" step="1" placeholder="0" required></label><div class="available"><small>BESCHIKBAAR SALDO</small><b id="available">€ 0,00</b></div></div>
+      <label>Omschrijving <span class="optional">OPTIONEEL</span><input id="description" type="text" maxlength="60" placeholder="Bijv. Terugbetaling"></label>
+      <div class="transfer-note"><span>✦</span><p>Controleer het rekeningnummer goed. Een uitgevoerde overboeking kan niet automatisch worden teruggedraaid.</p></div>
+      <button class="submit" type="submit">Overboeking controleren <span>→</span></button>
+     </form>
+    </div>
+   </section>
+   <section class="page hidden" id="history">
+    <div class="section-head history-head"><div><h2>Transactiegeschiedenis</h2><p>Een overzicht van je inkomende en uitgaande betalingen.</p></div></div>
+    <div class="transactions full" id="allTransactions"></div>
+   </section>
+   <footer><span>© THOOTJE DEVELOPMENT</span><span>JOUW GELD. JOUW CONTROLE.</span></footer>
+  </main>
+ </div>
+</div>
+<div id="confirm" class="modal hidden"><div class="modal-card"><div class="modal-icon">↗</div><h2>Overboeking bevestigen</h2><p>Controleer de gegevens voordat je de betaling verstuurt.</p><div class="confirm-details"><div><small>NAAR REKENING</small><b id="confirmAccount">—</b></div><div><small>BEDRAG</small><b id="confirmAmount">—</b></div><div><small>OMSCHRIJVING</small><b id="confirmDescription">—</b></div></div><div class="modal-actions"><button id="cancelConfirm" class="ghost">Annuleren</button><button id="sendConfirm" class="submit">Bevestigen →</button></div></div></div>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body></html>

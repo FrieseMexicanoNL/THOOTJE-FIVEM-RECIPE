@@ -1,0 +1,48 @@
+THOOTJE-CORE INTEGRATIEPATCH
+============================
+
+1) config.lua
+Voeg toe:
+    Config.MulticharacterEnabled = true
+
+2) server/database.lua
+Wijzig de functie-signatuur:
+    function Thootje.LoadPlayer(src)
+naar:
+    function Thootje.LoadPlayer(src, identifierOverride, characterName)
+
+Vervang in die functie:
+    local identifier = Thootje.GetIdentifier(src)
+door:
+    local identifier = identifierOverride or Thootje.GetIdentifier(src)
+
+Bij het aanmaken van een nieuw record vervang:
+    identifier, GetPlayerName(src) or 'Onbekend',
+door:
+    identifier, characterName or GetPlayerName(src) or 'Onbekend',
+
+Bij het opbouwen van player vervang:
+    name = GetPlayerName(src) or row.name,
+door:
+    name = characterName or row.name,
+
+Voeg onderaan database.lua toe:
+    exports('LoadPlayer', function(src, identifierOverride, characterName)
+        if not identifierOverride or type(identifierOverride) ~= 'string' then return false end
+        Thootje.LoadPlayer(src, identifierOverride, characterName)
+        return Thootje.Players[src] ~= nil
+    end)
+
+3) server/main.lua
+Zoek de playerJoining handler. Vervang:
+    if GetPlayerName(src) then Thootje.LoadPlayer(src) end
+door:
+    if GetPlayerName(src) and not Config.MulticharacterEnabled then
+        Thootje.LoadPlayer(src)
+    end
+
+4) BELANGRIJK
+- Controleer dat de LoadPlayer export maar één keer wordt gedefinieerd.
+- Gebruik bij multicharacter altijd de unieke character identifier (license:...:char:<database-id>).
+- Verwijder oude testrecords alleen als je zeker weet dat je ze niet meer nodig hebt.
+- Maak eerst een databasebackup.

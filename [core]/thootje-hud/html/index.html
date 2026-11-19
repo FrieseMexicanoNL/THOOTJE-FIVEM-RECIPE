@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<title>THOOTJE HUD</title>
+</head>
+<body>
+<div id="hud">
+  <section class="brand"><span class="brand-dot"></span><span>THOOTJE</span><small>ROLEPLAY</small></section>
+  <section class="status panel" data-module="status">
+    <div class="stat" data-module="health"><i>♥</i><div><b>GEZONDHEID</b><span class="bar"><em id="healthBar"></em></span></div><strong id="health">100</strong></div>
+    <div class="stat" data-module="armor"><i>⬟</i><div><b>BEWAPENING</b><span class="bar"><em id="armorBar"></em></span></div><strong id="armor">0</strong></div>
+    <div class="stat" data-module="hunger"><i>◒</i><div><b>HONGER</b><span class="bar"><em id="hungerBar"></em></span></div><strong id="hunger">100</strong></div>
+    <div class="stat" data-module="thirst"><i>◉</i><div><b>DORST</b><span class="bar"><em id="thirstBar"></em></span></div><strong id="thirst">100</strong></div>
+    <div class="stat compact" data-module="stamina"><i>ϟ</i><span>UITHOUDING</span><strong id="stamina">100%</strong></div>
+    <div class="stat compact" data-module="oxygen"><i>≈</i><span>ZUURSTOF</span><strong id="oxygen">100%</strong></div>
+  </section>
+  <section class="identity panel" data-module="identity">
+    <div class="identity-top"><span class="pill" id="player">ID 1</span><span class="pill voice" id="voice">● STIL</span></div>
+    <div class="location" data-module="street"><b id="street">Onbekende straat</b><small id="crossing"></small></div>
+    <div class="identity-bottom">
+      <span data-module="job" id="job">Werkloos</span>
+      <span data-module="time" id="time">12:00</span>
+    </div>
+  </section>
+  <section class="money panel" data-module="money">
+    <div data-module="cash"><small>CONTANT</small><b id="cash">€0</b></div>
+    <div data-module="bank"><small> BANK</small><b id="bank">€0</b></div>
+  </section>
+  <section class="vehicle panel" id="vehicle" data-module="vehicle">
+    <div class="speed"><strong id="speed">000</strong><small>KM/U</small></div>
+    <div class="vehicle-info"><span>BRANDSTOF <b id="fuel">100%</b></span><span>MOTOR <b id="engine">100%</b></span><span class="fuelbar"><i id="fuelBar"></i></span></div>
+  </section>
+</div>
+
+<div id="editor" class="hidden">
+ <div class="editor-window">
+  <header><div><small>THOOTJE DEVELOPMENT</small><h1>HUD STUDIO <span>✦</span></h1><p>Maak jouw interface helemaal eigen.</p></div><button id="close">✕</button></header>
+  <nav class="tabs"><button class="active" data-tab="widgets">Widgets</button><button data-tab="style">Vormgeving</button><button data-tab="help">Handleiding</button></nav>
+  <main>
+   <div class="tab-page" id="widgets">
+    <div class="section-title">WAT WIL JE ZIEN?<small>Schakel onderdelen in of uit.</small></div>
+    <div class="toggle-grid" id="toggles"></div>
+    <div class="hint">✦ Tip: sleep de HUD-onderdelen in de game naar de plek die jij fijn vindt.</div>
+   </div>
+   <div class="tab-page hidden" id="style">
+    <div class="section-title">JOUW UITSTRALING<small>Kies een stijl die bij je past.</small></div>
+    <label class="field">Accentkleur <div class="swatches"><button data-color="cyan"></button><button data-color="purple"></button><button data-color="orange"></button><button data-color="red"></button><button data-color="blue"></button><button data-color="lime"></button></div></label>
+    <label class="field">HUD grootte <input id="scale" type="range" min="70" max="130" value="100"></label>
+    <label class="field">Doorzichtigheid <input id="opacity" type="range" min="35" max="100" value="92"></label>
+    <label class="field">Hoekstijl <select id="shape"><option value="rounded">Modern afgerond</option><option value="sharp">Strak / hoekig</option></select></label>
+    <label class="field">Compacte modus <input id="compact" type="checkbox"></label>
+   </div>
+   <div class="tab-page hidden" id="help">
+    <div class="section-title">ZO WERKT HET<small>Jij hebt de controle.</small></div>
+    <p class="helptext">Druk op <b>F7</b> of typ <b>/hud</b> om HUD Studio te openen. Sleep widgets direct in de wereld naar een nieuwe plek. Zet onderdelen aan of uit, kies een accentkleur en pas grootte en transparantie aan. Je instellingen worden lokaal opgeslagen.</p>
+    <p class="helptext">Honger en dorst worden automatisch gelezen uit de metadata van THOOTJE-CORE. Je needs-script kan ze ook bijwerken met het event <code>thootje-hud:client:setNeeds</code>.</p>
+   </div>
+  </main>
+  <footer><button class="secondary" id="reset">Herstellen</button><span id="saved">Automatisch opgeslagen</span><button class="primary" id="done">Opslaan & sluiten</button></footer>
+ </div>
+</div>
+<script src="app.js"></script>
+</body></html>

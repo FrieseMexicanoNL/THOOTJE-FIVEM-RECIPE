@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS thootje_garage_vehicles (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  owner VARCHAR(100) NOT NULL,
+  plate VARCHAR(12) NOT NULL UNIQUE,
+  model VARCHAR(80) NOT NULL,
+  vehicle_label VARCHAR(100) NOT NULL,
+  vehicle_type VARCHAR(24) NOT NULL DEFAULT 'car',
+  vehicle_data LONGTEXT NOT NULL,
+  garage VARCHAR(64) NOT NULL DEFAULT 'legion',
+  stored TINYINT(1) NOT NULL DEFAULT 1,
+  impounded TINYINT(1) NOT NULL DEFAULT 0,
+  nickname VARCHAR(64) DEFAULT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_owner (owner),
+  INDEX idx_owner_garage (owner, garage),
+  INDEX idx_plate (plate)
+);

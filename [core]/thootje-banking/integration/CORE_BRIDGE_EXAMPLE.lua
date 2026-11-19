@@ -1,0 +1,11 @@
+-- Voorbeeld als jouw THOOTJE-CORE een andere playerdata-export gebruikt.
+-- Pas Config.IdentifierFields aan in config.lua of maak een export:
+-- exports('GetPlayerData', function(source) return ActivePlayers[source] end)
+--
+-- Verwachte minimale playerdata:
+-- {
+--   citizenid = 'CHAR-000123',
+--   job = { name = 'police', label = 'Politie' }
+-- }
+--
+-- Geef nooit een identifier door vanaf de client. De bank haalt deze server-side op.
