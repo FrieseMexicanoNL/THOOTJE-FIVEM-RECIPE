@@ -43,10 +43,10 @@ tasks:
 
   # Download de THOOTJE resources uit dezelfde GitHub repository
   # Pas GITHUB_USERNAME in deze recipe aan voordat je hem publiceert.
-  - action: download_github
-    src: https://github.com/GITHUB_USERNAME/THOOTJE-FIVEM-RECIPE
-    ref: main
-    dest: ./tmp/thootje-recipe
+ - action: download_github
+   src: https://github.com/FrieseMexicanoNL/THOOTJE-FIVEM-RECIPE
+   ref: main
+   dest: ./tmp/thootje-recipe
 
   - action: copy_path
     src: ./tmp/thootje-recipe/resources/[thootje]
